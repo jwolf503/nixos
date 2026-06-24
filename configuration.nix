@@ -11,6 +11,7 @@ inputs,
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -58,10 +59,11 @@ programs.mango.enable = true;
      git
      kitty
      nwg-look
+     stow
+     tealdeer
      thunar
      tree
      vis
-     stow
    ];
  };
 

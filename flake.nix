@@ -21,8 +21,11 @@ outputs = inputs @ {
   self,
   nixpkgs,
   ...
-}: {
-  nixosConfigurations.nixos-dell = nixpkgs.lib.nixosSystem {
+}: let
+    lib = nixpkgs.lib;
+    in {
+  nixosConfigurations = {
+    nixos-dell = lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = {inherit inputs;};
     modules = [
@@ -31,5 +34,6 @@ outputs = inputs @ {
       ./noctalia.nix
     ];
   };
+};
 };
 }
